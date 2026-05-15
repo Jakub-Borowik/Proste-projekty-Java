@@ -96,7 +96,7 @@ public class GamblingMachine {
             };
         }
 
-        if(row[0].equals(row[1]) || row[1].equals(row[2]) || row[0].equals(row[2])){
+        if(row[0].equals(row[2])){
             return switch(row[0]){
                 case "7️⃣" -> bet * 500;
                 case "💎" -> bet * 400;
@@ -115,6 +115,43 @@ public class GamblingMachine {
             };
         }
 
+        if(row[1].equals(row[2])){
+            return switch(row[1]){
+                case "7️⃣" -> bet * 500;
+                case "💎" -> bet * 400;
+                case "👑" -> bet * 300;
+                case "🍀" -> bet * 200;
+                case "💰" -> bet * 100;
+                case "🍒" -> bet * 50;
+                case "🍋" -> bet * 25;
+                case "🍇" -> bet * 10;
+                case "🍉" -> bet * 5;
+                case "♥️" -> bet * 4;
+                case "♠️" -> bet * 3;
+                case "♣️" -> bet * 2;
+                case "♦️" -> bet * 1.5;
+                default -> 0;
+            };
+        }
+
+        if(row[0].equals(row[1])){
+            return switch(row[0]){
+                case "7️⃣" -> bet * 500;
+                case "💎" -> bet * 400;
+                case "👑" -> bet * 300;
+                case "🍀" -> bet * 200;
+                case "💰" -> bet * 100;
+                case "🍒" -> bet * 50;
+                case "🍋" -> bet * 25;
+                case "🍇" -> bet * 10;
+                case "🍉" -> bet * 5;
+                case "♥️" -> bet * 4;
+                case "♠️" -> bet * 3;
+                case "♣️" -> bet * 2;
+                case "♦️" -> bet * 1.5;
+                default -> 0;
+            };
+        }
         return 0;
     }
 }
