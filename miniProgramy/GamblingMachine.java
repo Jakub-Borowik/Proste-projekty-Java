@@ -80,7 +80,7 @@ public class GamblingMachine {
         if(row[0].equals(row[1]) && row[1].equals(row[2])){
             return switch(row[0]){
                 case "7️⃣" -> bet * 2000;
-                case "💎" -> bet * 1000;
+                case "💎" -> bet * 1000; 
                 case "👑" -> bet * 750;
                 case "🍀" -> bet * 500;
                 case "💰" -> bet * 250;
