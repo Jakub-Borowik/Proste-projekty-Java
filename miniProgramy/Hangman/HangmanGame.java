@@ -1,15 +1,45 @@
 package miniProgramy.Hangman;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class HangmanGame {
     public static void main(String[] args) {
-
-        // TODO: Dodaj wybór czy własne słowo czy losuje z bazy.     +     Błąd kiedy wpisuje się już zgadniętą literę.
+        String filePath = "C:\\Users\\qbast\\Desktop\\Proste-projekty-Java\\miniProgramy\\Hangman\\slowa_wisielec.txt";
+        ArrayList<String> words = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        String word ="";
+        String wordPick = "";
 
-        String word = "manngo";
+        while(!wordPick.equals("own") && !wordPick.equals("base")){ // Kontynuuj gdy wordPick != own i wordPick != base.
+        System.out.print("Would you like to create your own word or get one random? (own/base): ");
+        wordPick = scanner.nextLine().toLowerCase();
+        }
+
+        if (wordPick.equals("base")) {
+        try(BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while((line = reader.readLine()) != null){
+                words.add(line.trim());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Couldn't find the file.");
+        } catch (IOException e) {
+            System.out.println("Something went wrong.");
+        }
+
+        Random random = new Random();
+        word = words.get(random.nextInt(words.size()));
+        } else if (wordPick.equals("own")) {
+            System.out.print("Please enter a word you would like: ");
+            word = scanner.nextLine().toLowerCase();
+        }
+
         ArrayList<Character> wordState = new ArrayList<>();
         int wrongGuesses = 0;
 
@@ -33,10 +63,15 @@ public class HangmanGame {
         char guess = scanner.next().toLowerCase().charAt(0);
 
         if(word.indexOf(guess) >= 0){
+            if(wordState.contains(guess)) {
+                wrongGuesses++;
+                System.out.println("You already guessed it!\n");
+            } else {
             System.out.println("Correct!\n");
             for(int i = 0; i < word.length(); i++){
                 if(word.charAt(i) == guess){
                     wordState.set(i, guess);
+                    }
                 }
             }
 
