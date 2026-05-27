@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class HangmanGame {
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\qbast\\Desktop\\Proste-projekty-Java\\miniProgramy\\Hangman\\slowa_wisielec.txt";
+        String filePath = "miniProgramy\\Hangman\\slowa_wisielec.txt";
         ArrayList<String> words = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         String word ="";
@@ -38,6 +38,7 @@ public class HangmanGame {
         } else if (wordPick.equals("own")) {
             System.out.print("Please enter a word you would like: ");
             word = scanner.nextLine().toLowerCase();
+            System.out.println("\n\n\n\n\n\n\n\n");
         }
 
         ArrayList<Character> wordState = new ArrayList<>();
